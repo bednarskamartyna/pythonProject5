@@ -94,3 +94,96 @@ class Pochodna(B, A):
 d = Pochodna()
 print(d.a)
 print(d.b)
+
+import math
+
+
+class Figura:
+    def obwod(self):  # L
+        """Obliczanie obwodu."""
+        raise NotImplementedError
+
+    def pole(self):  # S/P
+        """Obliczanie pola powierzchni."""
+        raise NotImplementedError
+
+class Kolo(Figura):
+    def __init__(self, r):
+        self.r = r
+    def pole(self):
+        pole = math.pi * self.r**2
+        print(pole)
+    def obwod(self):
+        obwod = 2* math.pi * self.r
+        print(obwod)
+
+kolo = Kolo(5)
+kolo.pole()
+kolo.obwod()
+
+class Prostokat(Figura):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+    def pole(self):
+        pole = self.a * self.b
+        print(pole)
+    def obwod(self):
+        obwod = 2 * self.a + 2 * self.b
+        print(obwod)
+
+prostokat = Prostokat(2,6)
+prostokat.obwod()
+prostokat.pole()
+
+class Kwadrat(Prostokat):
+    def __init__(self, a):
+        Prostokat.__init__(self, a, a)
+
+kwadrat = Kwadrat(7)
+kwadrat.obwod()
+kwadrat.pole()
+
+class TrojkatRownoboczny(Figura):
+    def __init__(self, a):
+        self.a = a
+    def pole(self):
+        pole = (self.a ** 2) * 3**(0.5) * 0.25
+        print(pole)
+    def obwod(self):
+        obwod = 3 * self.a
+        print(obwod)
+
+trojkat_rownoboczny = TrojkatRownoboczny(5)
+trojkat_rownoboczny.pole()
+trojkat_rownoboczny.obwod()
+
+class Rownoleglobok(Prostokat):
+    def __init__(self, a, b, h):
+        self.a = a
+        self.h = h
+        self.b = b
+    def pole(self):
+        pole = self.a * self.h
+        print(pole)
+
+rownoleglobok = Rownoleglobok(6, 4, 2)
+rownoleglobok.pole()
+rownoleglobok.obwod()
+
+class Trapez(Figura):
+    def __init__(self, a, b, d):
+        self.a = a
+        self.b = b
+        self.c = (d**2 + (a-b)**2)**0.5
+        self.d = d
+    def pole(self):
+        pole = 0.25 * (self.a + self.b)  * self.d
+        print(pole)
+    def obwod(self):
+        obwod = self.a + self.b + self.c + self.d
+        print(obwod)
+
+trapez = Trapez(3,4,4)
+trapez.obwod()
+trapez.pole()
