@@ -60,3 +60,37 @@ def __init__(self, nazwa, stan=0, limit=0):
     super().__init__(nazwa, stan)
     self.limit = limit
 
+class A:
+    """Rodzic pierwszy"""
+
+    def __init__(self):
+        super().__init__()
+        self.a = "A"
+
+    def fa(self):
+        print("a:", self.a)
+
+
+class B:
+    """Rodzic drugi"""
+
+    def __init__(self):
+        super().__init__()
+        self.b = "B"
+
+    def fb(self):
+        print("b:", self.b)
+
+
+class Pochodna(B, A):
+    """Dziecko"""
+
+    def __init__(self):
+        super().__init__()
+
+
+#__doc__ docstringi nie są dziedziczone
+
+d = Pochodna()
+print(d.a)
+print(d.b)
