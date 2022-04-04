@@ -220,3 +220,77 @@ class Bus(Vehicle):
 bus2 = Bus("Szkolny bus", 180, 12)
 print(bus2.seating_capacity())
 
+class Vehicle:
+    def __init__(self, name, max_speed, mileage):
+        self.name = name
+        self.max_speed = max_speed
+        self.mileage = mileage
+
+    def seating_capacity(self, capacity):
+        return f"Liczba miejsc siedzących w {self.name} to {capacity} pasażerów"
+
+class Bus(Vehicle):
+    def seating_capacity(self, capacity=50):
+        return Vehicle.seating_capacity(self,capacity)
+
+bus2 = Bus("Szkolny bus", 180, 12)
+print(bus2.seating_capacity())
+
+class Vehicle:
+    color = "Biały"
+    def __init__(self, name, max_speed, mileage):
+        self.name = name
+        self.max_speed = max_speed
+        self.mileage = mileage
+
+class Bus(Vehicle):
+    pass
+
+class Car(Vehicle):
+    pass
+
+bus3 = Bus("Szkolny bus", 180, 12)
+print(bus3.color)
+car = Car("Audi", 180, 12)
+print(car.color)
+
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+
+    def fare(self):
+        return self.capacity * 100
+
+class Bus(Vehicle):
+    def fare(self):
+        return super().fare() * 1.1
+
+school_bus = Bus("Szkolne Volvo", 12, 50)
+print("Całkowita opłata za przejazd autobusem wynosi:", school_bus.fare())
+
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    def area(self):
+        return self.length * self.width
+    def perimeter(self):
+        return 2 * self.length + 2 * self.width
+    def display(self):
+        print("Długość ", self.length, "Szerokość: ", self.width, "Pole: ", self.area(), "Obwód: ", self.perimeter())
+
+rectangle1 = Rectangle(4,6)
+rectangle1.display()
+
+class Parallelepipede(Rectangle):
+    def __init__(self, length, width, height):
+        self.length = length
+        self.width = width
+        self.height = height
+    def volume(self):
+        return Rectangle.area(self)*self.height
+
+parallelepipede = Parallelepipede(3,4,5)
+print(parallelepipede.volume())
