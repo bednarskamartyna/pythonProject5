@@ -199,3 +199,24 @@ class Bus (Vehicle):
 
 bus = Bus("Szkolny bus", 180, 12)
 
+
+# Ćwiczenie
+# Utwórz klasę Bus, która dziedziczy po klasie Vehicle.
+# Podaj argument pojemności w metodzie Bus.seating_capacity() o domyślnej wartości 50.
+
+class Vehicle:
+    def __init__(self, name, max_speed, mileage):
+        self.name = name
+        self.max_speed = max_speed
+        self.mileage = mileage
+
+    def seating_capacity(self, capacity):
+        return f"Liczba miejsc siedzących w {self.name} to {capacity} pasażerów"
+
+class Bus(Vehicle):
+    def seating_capacity(self, capacity = 50):
+        return super().seating_capacity(capacity)
+
+bus2 = Bus("Szkolny bus", 180, 12)
+print(bus2.seating_capacity())
+
